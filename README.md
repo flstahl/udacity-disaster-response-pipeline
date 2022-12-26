@@ -4,8 +4,7 @@
 2. [File Descriptions](https://github.com/flstahl/udacity-disaster-response-pipeline#file-descriptions)
 3. [Installation](https://github.com/flstahl/udacity-disaster-response-pipeline#installation)
 4. [Instructions](https://github.com/flstahl/udacity-disaster-response-pipeline#instructions)
-5. [Acknowledgements](https://github.com/flstahl/udacity-disaster-response-pipeline#acknowledgements)
-6. [Screenshots](https://github.com/flstahl/udacity-disaster-response-pipeline#screenshots)
+
 
 ## Introduction
 This project is my final project submission for the chapter Data Engineering of the Udacity Data Science Nano Degree Program.
