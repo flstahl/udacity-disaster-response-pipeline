@@ -67,7 +67,19 @@ def build_model():
                                ('count_vect', CountVectorizer(tokenizer=tokenize)),
                                 ('tfidf', TfidfTransformer())])),
                     ('Classifier', MultiOutputClassifier(estimator=RandomForestClassifier()))])
-    return pipeline
+    
+    parameters = {
+    'Features__count_vect__max_df': (.5,1),
+    'Features__count_vect__max_features': (None, 1000),
+    'Features__tfidf__use_idf': (True, False)
+    }
+
+    scorer = make_scorer(scoring_metric)
+    cv = GridSearchCV(pipeline, param_grid=parameters, scoring = scorer)
+
+    cv.fit(X_train, y_train)
+    
+    return cv
 
 
 def evaluate_model(model, X_test, Y_test, category_names):
