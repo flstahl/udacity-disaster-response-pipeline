@@ -28,7 +28,7 @@ def load_data(database_filepath):
     
     #read the data from previously created database and store as dataframe df
     engine = create_engine('sqlite:///'+database_filepath)
-    df = pd.read_sql_table(table_name='DesasterResponse_table', con = engine)
+    df = pd.read_sql_table(table_name='DisasterResponse_table', con = engine)
     
     #split the data into input data X and output data (labels) Y
     X = df.iloc[:,1]
@@ -61,23 +61,24 @@ def build_model():
     none
     
     OUTPUT:
-    pipeline = ML model pipeline 
+    cv = ML model pipeline Grid Search
     """
+    #create model pipeline instance
     pipeline = Pipeline([('Features', Pipeline([
                                ('count_vect', CountVectorizer(tokenizer=tokenize)),
                                 ('tfidf', TfidfTransformer())])),
                     ('Classifier', MultiOutputClassifier(estimator=RandomForestClassifier()))])
     
+    #specify parameters for grid search
     parameters = {
     'Features__count_vect__max_df': (.5,1),
     'Features__count_vect__max_features': (None, 1000),
     'Features__tfidf__use_idf': (True, False)
     }
 
+    #create scoring metric for grid search
     scorer = make_scorer(scoring_metric)
     cv = GridSearchCV(pipeline, param_grid=parameters, scoring = scorer)
-
-    cv.fit(X_train, y_train)
     
     return cv
 
@@ -93,8 +94,10 @@ def evaluate_model(model, X_test, Y_test, category_names):
     OUTPUT:
     none - print scores (precision, recall, f1-score) for each output category of the dataset.
     """
+    
     Y_pred_test = model.predict(X_test)
     
+    #print evaluation metrics for model & test data
     for i in np.arange(len(category_names)):
         print('Category: ' + category_names[i])
         print(classification_report(np.array(Y_test.iloc[:,i]), Y_pred_test[:,i]))
