@@ -87,7 +87,7 @@ def build_model():
 
     #create scoring metric for grid search
     scorer = make_scorer(scoring_metric)
-    cv = GridSearchCV(pipeline, param_grid=parameters, scoring = scorer)
+    cv = GridSearchCV(pipeline, param_grid=parameters)
     
     return cv
 
