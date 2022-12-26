@@ -54,6 +54,15 @@ def tokenize(text):
         
     return tokens   
 
+def scoring_metric(y_true, y_pred):
+    f1_list = []
+    for i in np.arange(y_pred.shape[1]):
+        f1_list.append(f1_score(np.array(y_true.values)[:,i], y_pred[:,i], average = 'micro'))
+    
+    score = np.mean(f1_list)
+    
+    return score    
+
 
 def build_model():
     """
