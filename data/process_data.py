@@ -57,6 +57,10 @@ def clean_data(df):
     #remove duplicate entries/samples
     df2.drop_duplicates(inplace=True)
     
+    
+    #upon inspection we noticed that in column 'related' there are not only 0 and 1 but also other values greater than 1. That's why we filter those out and drop the corresponding rows
+    df2 = df2.loc[df2['related'] < 2]
+    
     return df2
 
 def save_data(df, database_filename):

@@ -13,6 +13,8 @@ In this project, we have built a web application allowing to classify messages s
 After a series of data engineering and cleaning steps, the multiclass-multioutput model is trained and stored. Through a web app, users can interact with the model and classify unseen messages. Furthermore, some visualizations of the underlying data can be found.
 
 
+
+
 ## File Descriptions
 ### Folder: app
 **run.py** - python script to launch web application.<br/>
