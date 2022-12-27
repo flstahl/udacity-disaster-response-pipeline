@@ -12,7 +12,7 @@ This project is my final project submission for the chapter Data Engineering of 
 In this project, we have built a web application allowing to classify messages sent during disasters into one of 36 categories. The application uses a Machine Learning model which was trained on a set of pre-labeled real-life examples. 
 After a series of data engineering and cleaning steps, the multiclass-multioutput model is trained and stored. Through a web app, users can interact with the model and classify unseen messages. Furthermore, some visualizations of the underlying data can be found.
 
-
+This project aims at solving one of the most challenging problems in ML and Data Science these days. Following a disaster, typically there are millions of messages/tweets/texts generated which is overwhelming for disaster response organizations at the time where they have the least capacity. For them it is crucial to filter and extract those messages which are most important so that they can address the most pressing issues and situations quickly and appropriately and forward the messages to the right response team depending on the topic/area of help that is needed. The provided application allows Disaster Response teams to analyze, filter and priotize the vast amount of generated messages in a quick and automated fashion so that they can better target their resources on the people in need after a disaster.
 
 
 ## File Descriptions
